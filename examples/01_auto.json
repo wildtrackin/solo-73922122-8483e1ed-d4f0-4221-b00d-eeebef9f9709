@@ -1,0 +1,12 @@
+{
+  "name": "01 自动迁移（唯一落点）",
+  "original": "语料工程师修订OCR文本",
+  "revised": "语料工程师修订OCR文本内容",
+  "labels": {
+    "labels": [
+      { "id": "role", "start": 0, "end": 5 },
+      { "id": "task", "start": 7, "end": 10 }
+    ]
+  },
+  "expect": "两个标签在所有最优对齐中落点唯一，自动迁移到相同区间"
+}

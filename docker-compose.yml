@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    image: ocr-label-migrator:latest
+    container_name: ocr-label-migrator
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /data/app.db
+    volumes:
+      - appdata:/data
+    restart: unless-stopped
+
+volumes:
+  appdata:

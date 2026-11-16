@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCR 修订 · 实体标签迁移</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>OCR 修订 · 实体标签迁移</h1>
+  <div id="session-bar">
+    <span id="session-info">未创建会话</span>
+    <span id="revision-info"></span>
+  </div>
+</header>
+
+<div id="banner" class="banner hidden"></div>
+
+<main>
+  <section class="panel">
+    <h2>1. 输入</h2>
+    <div class="examples-row">
+      <label>示例：
+        <select id="example-select"></select>
+      </label>
+      <button id="load-example" type="button">填入示例</button>
+      <span class="hint">每段文本 ≤ 120 个码点；标签 ≤ 10 个、非空、互不重叠，区间为码点左闭右开。</span>
+    </div>
+    <label class="field">原文（OCR 结果）
+      <textarea id="original" rows="3" maxlength="400"
+        placeholder="原始 OCR 文本"></textarea>
+      <span class="count" id="original-count"></span>
+    </label>
+    <label class="field">修订文
+      <textarea id="revised" rows="3" maxlength="400"
+        placeholder="人工修订后的文本"></textarea>
+      <span class="count" id="revised-count"></span>
+    </label>
+    <label class="field">标签 JSON（基于原文的码点区间）
+      <textarea id="labels" rows="4" spellcheck="false"
+        placeholder='{"labels":[{"id":"ent1","start":0,"end":4}]}'></textarea>
+      <span class="count" id="labels-count"></span>
+    </label>
+    <div class="actions">
+      <button id="save" class="primary">保存并分析</button>
+      <span id="save-status" class="hint"></span>
+    </div>
+  </section>
+
+  <section class="panel" id="analysis-panel">
+    <h2>2. 分析结果</h2>
+    <div id="analysis-summary" class="hint">尚未分析。</div>
+    <div id="label-cards"></div>
+  </section>
+
+  <section class="panel">
+    <h2>3. 确认与下载</h2>
+    <div class="actions">
+      <button id="confirm" class="primary" disabled>确认并生成结果</button>
+      <a id="download" class="button hidden" href="#">下载修订文 + 标签 JSON</a>
+    </div>
+    <div id="confirm-status" class="hint"></div>
+    <pre id="result-preview" class="hidden"></pre>
+  </section>
+</main>
+
+<footer>
+  <span class="hint">在另一窗口修改任一输入后，本页的旧选择与在途确认会被服务端拒绝；改回原文也不会恢复。</span>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

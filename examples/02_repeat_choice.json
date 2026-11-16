@@ -1,0 +1,11 @@
+{
+  "name": "02 重复文字 · 多落点需选择",
+  "original": "abcabcabc",
+  "revised": "abcabc",
+  "labels": {
+    "labels": [
+      { "id": "rep", "start": 3, "end": 6 }
+    ]
+  },
+  "expect": "删除的是哪一段 abc 无法确定，标签 rep 可迁至 [0,3) 或 [3,6)，需人工选择"
+}
